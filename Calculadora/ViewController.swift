@@ -11,6 +11,8 @@ import Foundation
 
 class ViewController: UIViewController {
 
+    lazy var calculator = Calculator()
+    
     @IBOutlet weak var DisplayLabel: UILabel!
     @IBOutlet var numbersButtons: [UIButton]!
     
@@ -32,10 +34,10 @@ class ViewController: UIViewController {
                 number2 = Int(numbers) ?? 0
             }
         case 10:
-            result = xSquared(number: number1)
+            result = calculator.xSquared(number: number1)
             DisplayLabel.text? = "\(number1)²"
         case 11:
-            result = squareRoot(number: number1)
+            result = calculator.squareRoot(number: number1)
             DisplayLabel.text? = "√\(number1)"
         case 12...15:
             operation = String(describing: sender.titleLabel!.text!)
@@ -43,38 +45,17 @@ class ViewController: UIViewController {
             numbers = ""
         case 16:
             if !operation.isEmpty {
-                result = operations(operation: operation, number1: number1, number2: number2)
+                result = calculator.operations(operation: operation, number1: number1, number2: number2)
             }
-            DisplayLabel.text? = "Resultado: \(result)"
+            DisplayLabel.text? = "Result: \(result)"
+            number1 = Int(result) ?? 0
+            number2 = 0
+            numbers = String(number1)
+            operation = ""
         default:
             clear()
         }
         
-    }
-    
-    func xSquared(number: Int) -> String {
-        let xSquar = pow(Decimal(number),2)
-        return "\(xSquar)"
-    }
-    
-    func squareRoot(number: Int) -> String {
-        let res = sqrt(Double(number))
-        return "\(res)"
-    }
-    
-    func operations(operation: String, number1: Int, number2: Int) -> String {
-        switch operation {
-        case "÷":
-            return "\(number1 / number2)"
-        case "x":
-            return "\(number1 * number2)"
-        case "+":
-            return "\(number1 + number2)"
-        case "-":
-            return "\(number1 - number2)"
-        default:
-            return "0"
-        }
     }
     
     func clear() {
