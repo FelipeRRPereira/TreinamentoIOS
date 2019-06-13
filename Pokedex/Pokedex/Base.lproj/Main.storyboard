@@ -242,11 +242,28 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BuH-ss-tcm">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="O5C-rn-Pje">
+                                        <rect key="frame" x="188.5" y="344" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.32272046232876711" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="O5C-rn-Pje" firstAttribute="centerX" secondItem="BuH-ss-tcm" secondAttribute="centerX" id="9EB-J7-WnG"/>
+                                    <constraint firstItem="O5C-rn-Pje" firstAttribute="centerY" secondItem="BuH-ss-tcm" secondAttribute="centerY" id="eKU-YK-Z4o"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="nGn-i0-TYa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1MW-qr-hVL"/>
+                            <constraint firstItem="BuH-ss-tcm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2gp-Sf-dRc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BuH-ss-tcm" secondAttribute="bottom" id="8Nh-Bf-4Mj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nGn-i0-TYa" secondAttribute="trailing" id="HWU-HE-pPe"/>
+                            <constraint firstItem="BuH-ss-tcm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="PcY-hy-7TP"/>
+                            <constraint firstItem="BuH-ss-tcm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="SiG-rq-Anx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nGn-i0-TYa" secondAttribute="bottom" id="Z2v-bv-cjh"/>
                             <constraint firstItem="nGn-i0-TYa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="i1R-LJ-joG"/>
                         </constraints>
@@ -254,6 +271,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Pokemon" id="uNv-1B-vaJ"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="BuH-ss-tcm" id="26W-sT-wr9"/>
                         <outlet property="tableView" destination="nGn-i0-TYa" id="cYq-aN-syS"/>
                     </connections>
                 </viewController>
@@ -265,108 +283,66 @@
         <scene sceneID="S0s-cE-KGw">
             <objects>
                 <viewController storyboardIdentifier="DetailViewController" id="0to-0D-S9c" customClass="DetailViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="w4F-1e-NN0">
+                    <view key="view" contentMode="scaleToFill" id="w4F-1e-NN0" customClass="GradientView" customModule="Pokedex" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Yd-k7-VV9" customClass="GradientView" customModule="Pokedex" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                        <color key="value" red="0.33333333333333331" green="0.61960784313725492" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                        <color key="value" red="0.41176470588235292" green="0.72549019607843135" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="horizontalMode" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r2U-MX-yhU">
-                                <rect key="frame" x="20" y="44" width="41" height="30"/>
-                                <state key="normal" title="Voltar"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6bw-8y-UcB">
+                                <rect key="frame" x="127" y="368" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="hJ3-bK-jM5"/>
+                                    <constraint firstAttribute="height" constant="160" id="r6k-Tl-yfU"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9X-yk-7bd">
+                                <rect key="frame" x="15" y="64" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="QZH-u3-jQe"/>
+                                    <constraint firstAttribute="width" constant="44" id="oBd-R1-cE1"/>
+                                </constraints>
+                                <state key="normal" image="ic_path"/>
                                 <connections>
-                                    <action selector="touchBack:" destination="0to-0D-S9c" eventType="touchUpInside" id="cc0-mk-WKG"/>
+                                    <action selector="dismissAction:" destination="0to-0D-S9c" eventType="touchUpInside" id="G4c-tH-Tcm"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SZy-aj-6rp">
-                                <rect key="frame" x="0.0" y="84" width="414" height="778"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="130" id="rgC-Cc-Pmm">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="130"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rgC-Cc-Pmm" id="khf-Jr-D9t">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="129.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JPi-tm-PON">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="130.5"/>
-                                                    <color key="backgroundColor" name="psychic"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="130" id="2eJ-rd-iM8"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="JPi-tm-PON" secondAttribute="trailing" id="8AX-3F-Eoz"/>
-                                                <constraint firstAttribute="bottom" secondItem="JPi-tm-PON" secondAttribute="bottom" id="ITE-s3-8qd"/>
-                                                <constraint firstItem="JPi-tm-PON" firstAttribute="top" secondItem="khf-Jr-D9t" secondAttribute="top" id="ojo-G3-QKc"/>
-                                                <constraint firstItem="JPi-tm-PON" firstAttribute="leading" secondItem="khf-Jr-D9t" secondAttribute="leading" id="uMh-p1-t8e"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="48" id="YKD-sK-5sJ">
-                                        <rect key="frame" x="0.0" y="158" width="414" height="48"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YKD-sK-5sJ" id="Zow-a2-7Mi">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="47.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBu-Qi-69n">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="47.5"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="48"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstItem="tBu-Qi-69n" firstAttribute="leading" secondItem="Zow-a2-7Mi" secondAttribute="leading" id="8rO-wK-3kY"/>
-                                                <constraint firstItem="tBu-Qi-69n" firstAttribute="top" secondItem="Zow-a2-7Mi" secondAttribute="top" id="SYd-gm-47N"/>
-                                                <constraint firstAttribute="trailing" secondItem="tBu-Qi-69n" secondAttribute="trailing" id="uUt-5K-wLV"/>
-                                                <constraint firstAttribute="bottom" secondItem="tBu-Qi-69n" secondAttribute="bottom" id="xiD-4l-fJW"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" name="psychic"/>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="0to-0D-S9c" id="KSs-sh-qlk"/>
-                                    <outlet property="delegate" destination="0to-0D-S9c" id="WYG-XL-dUo"/>
-                                </connections>
-                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaR-3d-P6V" customClass="PokemonTypeView" customModule="Pokedex" customModuleProvider="target">
+                                <rect key="frame" x="152" y="812" width="110" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="B4I-CL-WmC"/>
+                                    <constraint firstAttribute="width" constant="110" id="vzQ-7v-N69"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="SZy-aj-6rp" firstAttribute="top" secondItem="ebf-WS-ubc" secondAttribute="top" constant="40" id="1Q5-6y-Dyf"/>
-                            <constraint firstAttribute="bottom" secondItem="8Yd-k7-VV9" secondAttribute="bottom" id="1pt-b5-lKi"/>
-                            <constraint firstItem="8Yd-k7-VV9" firstAttribute="top" secondItem="w4F-1e-NN0" secondAttribute="top" id="4tu-Bl-MSk"/>
-                            <constraint firstItem="8Yd-k7-VV9" firstAttribute="leading" secondItem="ebf-WS-ubc" secondAttribute="leading" id="DHq-1W-usP"/>
-                            <constraint firstItem="r2U-MX-yhU" firstAttribute="leading" secondItem="w4F-1e-NN0" secondAttribute="leadingMargin" id="Gw5-bW-W8y"/>
-                            <constraint firstItem="r2U-MX-yhU" firstAttribute="top" secondItem="ebf-WS-ubc" secondAttribute="top" id="Id3-WW-QWL"/>
-                            <constraint firstItem="8Yd-k7-VV9" firstAttribute="trailing" secondItem="ebf-WS-ubc" secondAttribute="trailing" id="Yz6-Ba-Acf"/>
-                            <constraint firstItem="ebf-WS-ubc" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="r2U-MX-yhU" secondAttribute="trailing" symbolic="YES" id="bhP-ZO-jw7"/>
-                            <constraint firstItem="ebf-WS-ubc" firstAttribute="trailing" secondItem="SZy-aj-6rp" secondAttribute="trailing" id="ctM-kR-RDH"/>
-                            <constraint firstItem="SZy-aj-6rp" firstAttribute="leading" secondItem="ebf-WS-ubc" secondAttribute="leading" id="dQH-gG-OpA"/>
-                            <constraint firstItem="ebf-WS-ubc" firstAttribute="bottom" secondItem="SZy-aj-6rp" secondAttribute="bottom" id="kHg-ak-aUb"/>
+                            <constraint firstItem="aaR-3d-P6V" firstAttribute="centerX" secondItem="w4F-1e-NN0" secondAttribute="centerX" id="1cT-eb-pNM"/>
+                            <constraint firstItem="6bw-8y-UcB" firstAttribute="centerY" secondItem="w4F-1e-NN0" secondAttribute="centerY" priority="999" id="1rt-iw-9Oq"/>
+                            <constraint firstItem="6bw-8y-UcB" firstAttribute="centerX" secondItem="w4F-1e-NN0" secondAttribute="centerX" id="Pvt-bn-Xir"/>
+                            <constraint firstItem="6bw-8y-UcB" firstAttribute="top" secondItem="ebf-WS-ubc" secondAttribute="top" priority="900" constant="20" id="TlK-u7-qzf"/>
+                            <constraint firstItem="ebf-WS-ubc" firstAttribute="bottom" secondItem="aaR-3d-P6V" secondAttribute="bottom" constant="20" id="ZLh-yK-aDG"/>
+                            <constraint firstItem="Y9X-yk-7bd" firstAttribute="top" secondItem="ebf-WS-ubc" secondAttribute="top" constant="20" id="fXp-4s-SHA"/>
+                            <constraint firstItem="Y9X-yk-7bd" firstAttribute="leading" secondItem="ebf-WS-ubc" secondAttribute="leading" constant="15" id="rBZ-p4-GQ2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ebf-WS-ubc"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="horizontalMode" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="gradientView" destination="w4F-1e-NN0" id="sco-pR-rLh"/>
+                        <outlet property="imageView" destination="6bw-8y-UcB" id="B50-eM-c0d"/>
+                        <outlet property="pokemonImageViewCenterVerticallyConstraint" destination="1rt-iw-9Oq" id="Uca-yB-QIL"/>
+                        <outlet property="pokemonImageViewHeightConstraint" destination="r6k-Tl-yfU" id="38b-Pa-0rl"/>
+                        <outlet property="pokemonImageViewTopVerticallConstraint" destination="TlK-u7-qzf" id="Re3-yV-uRY"/>
+                        <outlet property="pokemonImageViewWidthConstraint" destination="hJ3-bK-jM5" id="NDG-Fi-NRg"/>
+                        <outlet property="pokemonTypeView" destination="aaR-3d-P6V" id="EqA-5e-qc9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFP-Fn-aHs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -375,15 +351,13 @@
     </scenes>
     <resources>
         <image name="disk" width="26" height="26"/>
+        <image name="ic_path" width="21" height="12"/>
         <image name="pikashadow" width="28" height="29"/>
         <namedColor name="pokemonId">
             <color red="0.64313725490196083" green="0.64313725490196083" blue="0.64313725490196083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="pokemonNome">
             <color red="0.30980392156862746" green="0.30980392156862746" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="psychic">
-            <color red="0.97299998998641968" green="0.48600000143051147" blue="0.4779999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

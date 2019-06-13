@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PokemonTypeView" customModule="Pokedex" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="C6C-Mq-y5d"/>
+                <outlet property="typeImageView" destination="26B-YS-HyX" id="KU0-tD-XRH"/>
+                <outlet property="typeLabel" destination="8gc-sm-EOM" id="dVi-Ak-Iih"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="td7-Ra-eUK">
+                    <rect key="frame" x="6" y="0.0" width="138" height="30"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_water" translatesAutoresizingMaskIntoConstraints="NO" id="26B-YS-HyX">
+                            <rect key="frame" x="0.0" y="0.0" width="34" height="30"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gc-sm-EOM">
+                            <rect key="frame" x="34" y="0.0" width="104" height="30"/>
+                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" name="psychic"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="td7-Ra-eUK" secondAttribute="trailing" constant="6" id="1jy-dp-SdB"/>
+                <constraint firstItem="td7-Ra-eUK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="8Kh-C6-JTb"/>
+                <constraint firstItem="td7-Ra-eUK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="6" id="L9g-98-cXA"/>
+                <constraint firstAttribute="bottom" secondItem="td7-Ra-eUK" secondAttribute="bottom" id="gHj-vA-T6b"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="edY-XK-qWl"/>
+            <point key="canvasLocation" x="47.826086956521742" y="34.821428571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_water" width="10" height="15"/>
+        <namedColor name="psychic">
+            <color red="0.97299998998641968" green="0.48600000143051147" blue="0.4779999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

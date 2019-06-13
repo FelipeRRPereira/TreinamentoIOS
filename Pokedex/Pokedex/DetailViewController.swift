@@ -10,45 +10,92 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet var gradientView: GradientView!
+    
+    @IBOutlet weak var pokemonImageViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var pokemonImageViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var pokemonImageViewCenterVerticallyConstraint: NSLayoutConstraint!
+    @IBOutlet weak var pokemonImageViewTopVerticallConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var pokemonTypeView: PokemonTypeView!
+    
+    var pokemon: Pokemon?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
-    @IBAction func touchBack(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
-
-}
-
-extension DetailViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        
-//    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 0
-        } else if section == 1 {
-            return 48
+        
+        self.initialConfig()
+        
+        if let type = pokemon?.types.first {
+            self.pokemonTypeView.config(type: type)
         }
-        return 0
-    }
-}
-
-extension DetailViewController: UITableViewDataSource{
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.loadPokemonAnimation()
+        self.requestPokemon()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+    func requestPokemon() {
+        if let pokemon = self.pokemon {
+            let requestMaker = RequestMaker()
+            
+            requestMaker.make(withEndpoint: .details(query: pokemon.id)) {
+                (pokemon: Pokemon) in
+                self.animateImagePokemonToTop()
+            }
+        }
     }
+    
+    func loadPokemonAnimation () {
+        
+        
+        UIView.animate(withDuration: 1, delay: 0, options: [.repeat, .autoreverse], animations: {
+            self.imageView.alpha = 0.2
+        })
+        
+//        UIView.animate(withDuration: 1, animations: {
+//            self.imageView.alpha = self.imageView.alpha == 1 ? 0.2 : 1
+//        }) { _ in
+//            self.loadPokemonAnimation()
+//        }
+    }
+    
+    func initialConfig() {
+        
+        if let pokemon = self.pokemon {
+            self.gradientView.startColor = pokemon.types.first?.color ?? .black
+            self.gradientView.endColor = pokemon.types.first?.color?.lighter() ?? .white
+            
+            self.imageView.loadImage(from: pokemon.image)
+        }
+        
+    }
+    
+    func animateImagePokemonToTop() {
+        DispatchQueue.main.sync {
+            self.imageView.layer.removeAllAnimations()
+            
+            self.pokemonImageViewCenterVerticallyConstraint.priority = UILayoutPriority(900)
+            self.pokemonImageViewTopVerticallConstraint.priority = UILayoutPriority(999)
+        
+            UIView.animate(withDuration: 1, animations: {
+                self.imageView.alpha = 1
+                self.pokemonImageViewWidthConstraint.constant = 80
+                self.pokemonImageViewHeightConstraint.constant = 80
+                self.view.layoutIfNeeded()
+                })
+        }
+    }
+    
+    @IBAction func dismissAction(_ sender: Any) {
+    
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
 }
