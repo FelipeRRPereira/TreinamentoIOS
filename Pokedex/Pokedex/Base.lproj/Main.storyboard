@@ -172,30 +172,22 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="m8J-Ng-Xnw">
                                                     <rect key="frame" x="313" y="17.5" width="91" height="40"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KrG-b7-KCM">
+                                                        <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="tiq-fu-Vk5" customClass="PokemonTypeImageView" customModule="Pokedex" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="40" id="5WO-pG-ZWL"/>
-                                                                <constraint firstAttribute="height" constant="40" id="xpl-ei-guo"/>
+                                                                <constraint firstAttribute="width" constant="40" id="87c-Hk-pAO"/>
+                                                                <constraint firstAttribute="height" constant="40" id="ESk-It-y3r"/>
                                                             </constraints>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <real key="value" value="20"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </imageView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vcf-4W-OMd">
+                                                        </view>
+                                                        <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="lNb-j1-Y1n" customClass="PokemonTypeImageView" customModule="Pokedex" customModuleProvider="target">
                                                             <rect key="frame" x="51" y="0.0" width="40" height="40"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="40" id="8vg-ey-j6U"/>
-                                                                <constraint firstAttribute="height" constant="40" id="Sua-7i-Dcd"/>
+                                                                <constraint firstAttribute="height" constant="40" id="ern-v3-GQo"/>
+                                                                <constraint firstAttribute="width" constant="40" id="sou-b4-bmL"/>
                                                             </constraints>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <real key="value" value="20"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </imageView>
+                                                        </view>
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="W4A-9D-gMT">
@@ -236,8 +228,8 @@
                                             <outlet property="idLabel" destination="KSb-X5-JXq" id="4FK-io-ZGN"/>
                                             <outlet property="nameLabel" destination="aCA-Ph-GcC" id="zyu-Bg-zRf"/>
                                             <outlet property="pictureImageView" destination="uzj-Bj-5au" id="Je0-iB-d1Y"/>
-                                            <outlet property="primaryTypeImageView" destination="KrG-b7-KCM" id="QgX-1D-riQ"/>
-                                            <outlet property="secondaryTypeImageView" destination="vcf-4W-OMd" id="n4S-U5-mLy"/>
+                                            <outlet property="primaryTypeImageView" destination="tiq-fu-Vk5" id="0I3-GO-o9i"/>
+                                            <outlet property="secondaryTypeImageView" destination="lNb-j1-Y1n" id="lQB-8c-6qa"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
