@@ -6,6 +6,7 @@
 //  Copyright © 2019 CWI Software. All rights reserved.
 //
 
+@testable import Pokedex
 import XCTest
 
 class PokedexTests: XCTestCase {
@@ -21,7 +22,8 @@ class PokedexTests: XCTestCase {
     func testExample() {
         let jsonUrl = Bundle(for: PokedexTests.self).url(forResource: "pokemons", withExtension: "json")!
         let data = try! Data(contentsOf: jsonUrl)
-//        print(String(data: data, encoding: .utf8))
+        
+        XCTAssertNoThrow(try RequestMaker.decoder.decode(PokemonResponse.self, from: data))
         
     }
 
