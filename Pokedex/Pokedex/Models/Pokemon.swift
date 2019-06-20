@@ -33,4 +33,12 @@ struct Pokemon: Codable {
     let description: String?
     let stats: [Stats]?
     
+    var mainType: PokemonType? {
+        return self.types.first
+    }
+    
+    var strongestStat: Stats? {
+        return self.stats?.first
+    }
+    
 }

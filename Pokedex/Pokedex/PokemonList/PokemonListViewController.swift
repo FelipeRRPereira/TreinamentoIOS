@@ -42,9 +42,28 @@ extension PokemonListViewController: UITableViewDelegate {
             detailViewController.pokemon = self.presenter.pokemon(at: indexPath.row)
             self.navigationController?.present(detailViewController, animated: true)
         }
-        
-        
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let actionType = self.presenter.swipeAction(for: indexPath.row)
+        
+        let contextualAction = UIContextualAction(style: .normal, title: actionType.text) {
+            (action, view, handler) in
+        
+            self.presenter.swipe(at: indexPath.row)
+            
+            handler(true)
+        }
+        
+        contextualAction.backgroundColor = actionType.color
+//        contextualAction.image = .pikachu
+        
+        let configuration = UISwipeActionsConfiguration(actions: [contextualAction])
+        
+        return configuration
+    }
+    
 }
 
 extension PokemonListViewController: PokemonListViewType {
@@ -54,3 +73,26 @@ extension PokemonListViewController: PokemonListViewType {
     }
 }
 
+enum PokemonSwipeAction {
+    case addFavorite, removeFavorite
+    
+    var text: String {
+        
+        switch self {
+        case .addFavorite:
+            return "Adicionar"
+        case .removeFavorite:
+            return "Remover"
+        }
+        
+    }
+    
+    var color: UIColor {
+        switch self {
+        case .addFavorite:
+            return .purple
+        case .removeFavorite:
+            return .red
+        }
+    }
+}

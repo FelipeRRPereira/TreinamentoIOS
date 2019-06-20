@@ -33,6 +33,7 @@ class PokemonTypeImageView: UIImageView {
     
     func config(type: PokemonType) {
         self.typeImageView.image = type.icon
+        self.contentView.backgroundColor = type.color
     }
     
 }
